@@ -4,10 +4,10 @@ package cs.toronto.edu.csc207.hello;
 public class HelloWorld {
 
   /**
-   * Entry point — prints a greeting to standard output.
-   *
-   * @param args command-line arguments (unused).
-   */
+  * Entry point — prints a greeting to standard output.
+  *
+  * @param args command-line arguments (unused).
+  */
   public static void main(String[] args) {
     System.out.println("Hello, World!");
   }

@@ -14,50 +14,60 @@ import javax.swing.SwingUtilities;
 /** A small Swing example: labelled text fields and a Submit button that shows a greeting dialog. */
 public class ButtonClickExample {
 
-  /**
-   * Builds and displays the window.
-   *
-   * @param args command-line arguments (unused)
-   */
-  public static void main(String[] args) {
-    SwingUtilities.invokeLater(
-        () -> {
-          JPanel firstNamePanel = new JPanel();
-          JTextField firstNameField = new JTextField(10);
-          firstNamePanel.add(new JLabel("First Name:"));
-          firstNamePanel.add(firstNameField);
+    /**
+     * Builds and displays the window.
+     *
+     * @param args command-line arguments (unused)
+     */
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(
+                () -> {
+                    JPanel firstNamePanel = new JPanel();
+                    JTextField firstNameField = new JTextField(10);
+                    firstNamePanel.add(new JLabel("First Name:"));
+                    firstNamePanel.add(firstNameField);
 
-          JPanel lastNamePanel = new JPanel();
-          JTextField lastNameField = new JTextField(10);
-          lastNamePanel.add(new JLabel("Last Name:"));
-          lastNamePanel.add(lastNameField);
+                    JPanel lastNamePanel = new JPanel();
+                    JTextField lastNameField = new JTextField(10);
+                    lastNamePanel.add(new JLabel("Last Name:"));
+                    lastNamePanel.add(lastNameField);
 
-          JPanel buttonPanel = new JPanel();
-          JButton submit = new JButton("Submit");
-          buttonPanel.add(submit);
-          buttonPanel.add(new JButton("Cancel"));
+                    JPanel buttonPanel = new JPanel();
+                    JButton submit = new JButton("Submit");
+                    JButton cancel = new JButton("Cancel");
+                    buttonPanel.add(submit);
+                    buttonPanel.add(cancel);
 
-          submit.addActionListener(
-              new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                  String firstName = firstNameField.getText();
-                  String lastName = lastNameField.getText();
-                  JOptionPane.showMessageDialog(null, "Hello " + firstName + " " + lastName);
-                }
-              });
+                    submit.addActionListener(
+                            new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    String firstName = firstNameField.getText();
+                                    String lastName = lastNameField.getText();
+                                    JOptionPane.showMessageDialog(null, "Hello " + firstName + " " + lastName);
+                                }
+                            });
 
-          JPanel mainPanel = new JPanel();
-          mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-          mainPanel.add(firstNamePanel);
-          mainPanel.add(lastNamePanel);
-          mainPanel.add(buttonPanel);
+                    cancel.addActionListener(
+                            new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    firstNameField.setText("");
+                                    lastNameField.setText("");
+                                }
+                            });
 
-          JFrame frame = new JFrame("Nested Panels Example");
-          frame.setContentPane(mainPanel);
-          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-          frame.pack();
-          frame.setVisible(true);
-        });
-  }
+                    JPanel mainPanel = new JPanel();
+                    mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+                    mainPanel.add(firstNamePanel);
+                    mainPanel.add(lastNamePanel);
+                    mainPanel.add(buttonPanel);
+
+                    JFrame frame = new JFrame("Nested Panels Example");
+                    frame.setContentPane(mainPanel);
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.pack();
+                    frame.setVisible(true);
+                });
+    }
 }
